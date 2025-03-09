@@ -6,8 +6,8 @@ namespace ProjectForBacis
     {
         static void Main(string[] args)
         {
-            List<int> Habib = new List<int>() { 7, 4, 8, 4, 5}; // rounds result
-            List<int> Conor = new List<int>() { 4, 6, 7, 8, 9}; // rounds result
+            List<int> Habib = new List<int>() { 7, 4, 8, 4, 5 }; // rounds result
+            List<int> Conor = new List<int>() { 4, 6, 7, 8, 9 }; // rounds result
 
             List<int> result = Results(Habib, Conor);
 
@@ -15,20 +15,34 @@ namespace ProjectForBacis
             {
                 Console.Write($"{item} / ");
             }
+
             Console.WriteLine();
 
-            int HabibScore = 0;
-            int ConorScore = 0;
-            int i =  0;
+            int HabibScore, ConorScore;
+
+            ResultScores(result, out HabibScore, out ConorScore);
+
+            WhoIsWinner(HabibScore, ConorScore);
+
+        }
+
+        private static void ResultScores(List<int> result, out int HabibScore, out int ConorScore)
+        {
+            HabibScore = 0;
+            ConorScore = 0;
+            int i = 0;
 
             while (i < result.Count)
             {
-                _= (result[i] == 1) ? HabibScore++ : ConorScore++; // result we need not to store
+                _ = (result[i] == 1) ? HabibScore++ : ConorScore++; // result we need not to store
 
                 i++;
             }
+        }
 
-            if(HabibScore > ConorScore)
+        private static void WhoIsWinner(int HabibScore, int ConorScore)
+        {
+            if (HabibScore > ConorScore)
             {
                 Console.WriteLine($"Habib is winner: {HabibScore} : {ConorScore}");
             }
@@ -36,8 +50,6 @@ namespace ProjectForBacis
             {
                 Console.WriteLine($"Conor is winner: {ConorScore} : {HabibScore} ");
             }
-
-
         }
 
         /// <summary>
